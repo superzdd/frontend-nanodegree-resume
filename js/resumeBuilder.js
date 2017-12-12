@@ -65,24 +65,47 @@ var model = {
 	},
 	projects: {
 		projects: [{
-			title: 'FOSUN Thanks Giving 2015',
-			dates: '2015-11-26',
-			description: 'First Wechat HTML5 project in Herdsric',
-			images: ['']
-		},
-		{
-			title: 'CHIVAS Home Party 2016',
-			dates: '2016-10-20',
-			description: 'First HTML5 project using Egret Engine',
-			images: ['']
-		},
-		{
-			title: 'Miku Chu chu 2017',
-			dates: '2017-12-1',
-			description: 'First HTML5 project for Tencent',
-			images: ['']
-		}],
+				title: 'FOSUN Thanks Giving 2015',
+				dates: '2015-11-26',
+				description: 'First Wechat HTML5 project in Herdsric',
+				images: ['']
+			},
+			{
+				title: 'CHIVAS Home Party 2016',
+				dates: '2016-10-20',
+				description: 'First HTML5 project using Egret Engine',
+				images: ['']
+			},
+			{
+				title: 'Miku Chu chu 2017',
+				dates: '2017-12-1',
+				description: 'First HTML5 project for Tencent',
+				images: ['']
+			}
+		],
 
-		display: function (){}
+		display: function() {}
 	}
 };
+
+var octpus = {
+	getHeaderBlock: function() {
+		var nameHtml = HTMLheaderName;
+		nameHtml = nameHtml.replace(/%data%/, model.bio.name);
+
+		var roleHtml = HTMLheaderRole;
+		roleHtml = roleHtml.replace(/%data%/, model.bio.role);
+
+		var html = nameHtml + roleHtml;
+		return html;
+	}
+}
+
+var headerView = {
+	init: function() {
+		this.$headerElem = $("#header");
+		this.$headerElem.append(octpus.getHeaderBlock());
+	}
+}
+
+headerView.init();
